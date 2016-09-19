@@ -316,7 +316,7 @@
               <fo:table-row>  <!--     keep-with-next.within-column="always"  -->
                 <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.', $shade)"/></xsl:call-template>
                 <fo:table-cell padding="1pt" number-columns-spanned="3">
-                  <fo:block font-size="7pt" text-align="justify" text-indent="5pt">
+                  <fo:block font-size="5pt" text-align="justify" text-indent="5pt">
                     <xsl:call-template name="paragraghlist">
                       <xsl:with-param name="tag" select="$desc.tag"/>
                     </xsl:call-template>
