@@ -66,11 +66,7 @@
             <fo:block text-align="center" font-size="4pt">CURRENT</fo:block>
           </fo:table-cell>
         </fo:table-row>
-        <fo:table-row>
-          <fo:table-cell display-align="after" number-columns-spanned="5">
-            <fo:block text-align="center" font-size="4pt">NON-LETHAL</fo:block>
-          </fo:table-cell>
-        </fo:table-row>
+        
         <fo:table-row>
           <fo:table-cell display-align="center" number-columns-spanned="5">
             <xsl:call-template name="attrib">
@@ -81,9 +77,10 @@
         </fo:table-row>
         <fo:table-row>
           <fo:table-cell display-align="after" number-columns-spanned="5">
-            <fo:block text-align="center" font-size="4pt">DR</fo:block>
+            <fo:block text-align="center" font-size="4pt">NON-LETHAL</fo:block>
           </fo:table-cell>
         </fo:table-row>
+        
         <fo:table-row>
           <fo:table-cell display-align="center" number-columns-spanned="5">
             <xsl:call-template name="attrib">
@@ -95,6 +92,11 @@
               </xsl:if>
               &#160;
             </fo:block>
+          </fo:table-cell>
+        </fo:table-row>
+        <fo:table-row>
+          <fo:table-cell display-align="after" number-columns-spanned="5">
+            <fo:block text-align="center" font-size="4pt">DR</fo:block>
           </fo:table-cell>
         </fo:table-row>
         <!-- <fo:table-row> -->
