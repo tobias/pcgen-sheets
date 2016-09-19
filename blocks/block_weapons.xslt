@@ -44,7 +44,8 @@ be shown on the front page
   </xsl:template>
 
   <xsl:variable name="complex_melee"><xsl:value-of select="system-property('complex.melee')"/></xsl:variable>
-
+  <!-- better approach would be to look at class features for this -->
+  <xsl:variable name="unchained_monk"><xsl:value-of select="system-property('unchained.monk')"/></xsl:variable>
 
 
   <!--
@@ -506,36 +507,65 @@ be shown on the front page
           <xsl:variable name="fab_7" select="fab_7"/>
           <xsl:variable name="fab_8" select="fab_8"/>
           <xsl:variable name="fab_9" select="fab_9"/>
-          <fo:table-row>
 
+          <fo:table-row>
             <fo:table-cell number-columns-spanned="4">
               <xsl:call-template name="attrib">
                 <xsl:with-param name="attribute" select="'weapon.hilight'"/>
               </xsl:call-template>
               <fo:block font-size="8pt">
-                <xsl:value-of select="format-number($fab + $fab_1,'+#;-#')"/>/
-                <xsl:value-of select="format-number($fab + $fab_2,'+#;-#')"/>
-                <xsl:if test="(flurry_attacks &gt; 2)">
-                  /<xsl:value-of select="format-number($fab + $fab_3,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 3)">
-                  /<xsl:value-of select="format-number($fab + $fab_4,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 4)">
-                  /<xsl:value-of select="format-number($fab + $fab_5,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 5)">
-                  /<xsl:value-of select="format-number($fab + $fab_6,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 6)">
-                  /<xsl:value-of select="format-number($fab + $fab_7,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 7)">
-                  /<xsl:value-of select="format-number($fab + $fab_8,'+#;-#')"/>
-                </xsl:if>
-                <xsl:if test="(flurry_attacks &gt; 8)">
-                  /<xsl:value-of select="format-number($fab + $fab_9,'+#;-#')"/>
-                </xsl:if>
+                <xsl:choose>
+                  <xsl:when test="$unchained_monk = 'true'">
+                    <xsl:value-of select="format-number($fab, '+#;-#')"/> /
+                    <xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    <xsl:if test="(flurry_attacks &gt; 2)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 3)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 4)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 5)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 6)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 7)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 8)">
+                      /<xsl:value-of select="format-number($fab, '+#;-#')"/>
+                    </xsl:if>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="format-number($fab + $fab_1,'+#;-#')"/> /
+                    <xsl:value-of select="format-number($fab + $fab_2,'+#;-#')"/>
+                    <xsl:if test="(flurry_attacks &gt; 2)">
+                      /<xsl:value-of select="format-number($fab + $fab_3,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 3)">
+                      /<xsl:value-of select="format-number($fab + $fab_4,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 4)">
+                      /<xsl:value-of select="format-number($fab + $fab_5,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 5)">
+                      /<xsl:value-of select="format-number($fab + $fab_6,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 6)">
+                      /<xsl:value-of select="format-number($fab + $fab_7,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 7)">
+                      /<xsl:value-of select="format-number($fab + $fab_8,'+#;-#')"/>
+                    </xsl:if>
+                    <xsl:if test="(flurry_attacks &gt; 8)">
+                      /<xsl:value-of select="format-number($fab + $fab_9,'+#;-#')"/>
+                    </xsl:if>
+                  </xsl:otherwise>
+                </xsl:choose>
               </fo:block>
             </fo:table-cell>
           </fo:table-row>
@@ -1348,7 +1378,7 @@ be shown on the front page
             <fo:table-column>
               <xsl:attribute name="column-width"><xsl:value-of select="0.5 * ($column_width)" />mm</xsl:attribute>
             </fo:table-column>
-            
+
             <fo:table-body>
               <fo:table-row keep-with-next.within-page="always">
 
