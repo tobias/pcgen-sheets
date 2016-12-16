@@ -12,7 +12,7 @@ opts = GetoptLong.new(
 )
 
 scriptdir = File.dirname(File.expand_path(__FILE__))
-sheet = File.join(scriptdir, "character-sheet.xslt")
+sheet = File.join(scriptdir, "sheet", "character-sheet.xslt")
 
 character = nil
 output = File.expand_path("out.pdf")
