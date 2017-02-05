@@ -381,9 +381,9 @@
             <xsl:apply-templates select="equipment" />
             <xsl:apply-templates select="weight_allowance"/>
             <xsl:call-template name="money"/>
-            <xsl:apply-templates select="misc/magics"/>
+            <!--<xsl:apply-templates select="misc/magics"/>-->
             <xsl:apply-templates select="languages"/>
-            <xsl:apply-templates select="misc/companions"/>
+            <!--<xsl:apply-templates select="misc/companions"/>-->
             <xsl:apply-templates select="archetypes"/>
             <xsl:apply-templates select="animal_tricks"/>
             <xsl:apply-templates select="special_abilities"/>

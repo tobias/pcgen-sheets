@@ -173,7 +173,7 @@
         <fo:table-row keep-with-next.within-column="always">
           <fo:table-cell padding-top="1pt">
             <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.title')"/></xsl:call-template>
-            <fo:block font-size="9pt"><xsl:value-of select="$title"/></fo:block>
+            <fo:block font-size="7pt"><xsl:value-of select="$title"/></fo:block>
           </fo:table-cell>
         </fo:table-row>
         <fo:table-row keep-with-next.within-column="always">
@@ -264,6 +264,7 @@
     <xsl:param name="name.tag" />
     <xsl:param name="desc.tag" select="''" />
     <xsl:param name="benefit.tag" select="''" />
+    <xsl:param name="name.size" select="'9pt'" />
 
     <fo:table table-layout="fixed" space-before="2mm" border-collapse="collapse" padding="0.5pt">
       <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.border')"/></xsl:call-template>
@@ -280,7 +281,7 @@
         <fo:table-row keep-with-next.within-column="always">
           <fo:table-cell padding-top="1pt" number-columns-spanned="3">
             <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.title')"/></xsl:call-template>
-            <fo:block font-size="9pt"><xsl:value-of select="$title"/></fo:block>
+            <fo:block font-size="7pt"><xsl:value-of select="$title"/></fo:block>
           </fo:table-cell>
         </fo:table-row>
         <xsl:for-each select="$list">
@@ -297,16 +298,16 @@
                 <xsl:when test="source!=''">
                   <fo:table-cell padding="0pt" number-columns-spanned="2">
                     <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.', $shade)"/></xsl:call-template>
-                    <fo:block font-size="7pt" font-weight="bold"><xsl:value-of select="./*[name()=$name.tag]"/></fo:block>
+                    <fo:block font-size="{$name.size}" font-weight="bold"><xsl:value-of select="./*[name()=$name.tag]"/></fo:block>
                   </fo:table-cell>
                   <fo:table-cell padding="0pt" text-align="end">
-                    <fo:block  font-size="7pt" font-weight="bold">[<xsl:value-of select="source"/>]</fo:block>
+                    <fo:block  font-size="{$name.size}" font-weight="bold">[<xsl:value-of select="source"/>]</fo:block>
                   </fo:table-cell>
                 </xsl:when>
                 <xsl:otherwise>
                   <fo:table-cell number-columns-spanned="3" padding="0pt">
                     <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat($attribute, '.', $shade)"/></xsl:call-template>
-                    <fo:block font-size="7pt" font-weight="bold"><xsl:value-of select="./*[name()=$name.tag]"/></fo:block>
+                    <fo:block font-size="{$name.size}" font-weight="bold"><xsl:value-of select="./*[name()=$name.tag]"/></fo:block>
                   </fo:table-cell>
                 </xsl:otherwise>
               </xsl:choose>
@@ -713,7 +714,7 @@
                                 <fo:table-row keep-with-next.within-column="always">
                                         <fo:table-cell padding-top="1pt" number-columns-spanned="4">
                                                 <xsl:call-template name="attrib"><xsl:with-param name="attribute" select="'equipment.title'"/></xsl:call-template>
-                                                <fo:block font-size="9pt">EQUIPMENT</fo:block>
+                                                <fo:block font-size="7pt">EQUIPMENT</fo:block>
                                         </fo:table-cell>
                                 </fo:table-row>
                                 <fo:table-row>
@@ -892,7 +893,7 @@
 ====================================
 ====================================-->
         <xsl:template match="item" mode="equipment_name_details" >
-                <fo:block space-before.optimum="1pt" font-size="8pt">
+                <fo:block space-before.optimum="1pt" font-size="7pt">
                         <xsl:if test="contains(type, 'MAGIC') or contains(type, 'PSIONIC')">
                                 <xsl:attribute name="font-weight">bold</xsl:attribute>
                         </xsl:if>

@@ -38,7 +38,7 @@
 							<xsl:call-template name="attrib">
 								<xsl:with-param name="attribute" select="'equipment.title'"/>
 							</xsl:call-template>
-							<fo:block font-size="9pt">EQUIPMENT</fo:block>
+							<fo:block font-size="7pt">EQUIPMENT</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 					<fo:table-row>
@@ -47,16 +47,16 @@
 							<xsl:with-param name="attribute" select="'equipment.title'"/>
 						</xsl:call-template>
 						<fo:table-cell padding-top="1pt">
-							<fo:block font-size="7pt">ITEM</fo:block>
+							<fo:block font-size="6pt">ITEM</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-top="1pt">
-							<fo:block font-size="7pt">LOCATION</fo:block>
+							<fo:block font-size="6pt">LOCATION</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-top="1pt">
-							<fo:block font-size="7pt">QTY</fo:block>
+							<fo:block font-size="6pt">QTY</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-top="1pt" number-columns-spanned="2">
-							<fo:block font-size="7pt">WT / COST</fo:block>
+							<fo:block font-size="6pt">WT / COST</fo:block>
 						</fo:table-cell>
 <!-->						<fo:table-cell padding-top="1pt">
 							<fo:block font-size="7pt"></fo:block>
@@ -70,10 +70,10 @@
 							<xsl:with-param name="attribute" select="'equipment.title'"/>
 						</xsl:call-template>
 						<fo:table-cell padding-top="1pt">
-							<fo:block font-size="7pt">TOTAL WEIGHT CARRIED/VALUE</fo:block>
+							<fo:block font-size="6pt">TOTAL WEIGHT CARRIED/VALUE</fo:block>
 						</fo:table-cell>
 						<fo:table-cell padding-top="1pt">
-							<fo:block font-size="7pt">
+							<fo:block font-size="6pt">
 								<xsl:value-of select="total/weight"/>
 							</fo:block>
 						</fo:table-cell>
@@ -103,7 +103,7 @@
 											
 							<xsl:call-template name="attrib"><xsl:with-param name="attribute" select="concat('equipment.', $shade)"/></xsl:call-template>
 							<fo:table-cell>
-								<fo:block space-before.optimum="1pt" font-size="8pt">
+								<fo:block space-before.optimum="1pt" font-size="7pt">
 									<xsl:if test="contains(type, 'MAGIC') or contains(type, 'PSIONIC')">
 										<xsl:attribute name="font-weight">bold</xsl:attribute>
 									</xsl:if>
@@ -258,7 +258,7 @@
 						<xsl:call-template name="attrib">
 							<xsl:with-param name="attribute" select="'weight.title'"/>
 						</xsl:call-template>
-						<fo:block font-size="9pt">WEIGHT ALLOWANCE</fo:block>
+						<fo:block font-size="7pt">WEIGHT ALLOWANCE</fo:block>
 					</fo:table-cell>
 				</fo:table-row>
 				<fo:table-row keep-with-next.within-column="always">
@@ -318,7 +318,7 @@
 							<xsl:call-template name="attrib">
 								<xsl:with-param name="attribute" select="'money.title'"/>
 							</xsl:call-template>
-							<fo:block font-size="9pt">MONEY</fo:block>
+							<fo:block font-size="7pt">MONEY</fo:block>
 						</fo:table-cell>
 					</fo:table-row>
 				</fo:table-header>
