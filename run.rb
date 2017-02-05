@@ -8,7 +8,8 @@ opts = GetoptLong.new(
   ["-p", "--pcgen", GetoptLong::REQUIRED_ARGUMENT],
   ["-w", "--weapons-first-page", GetoptLong::REQUIRED_ARGUMENT],
   ["-C", "--complex-melee", GetoptLong::NO_ARGUMENT],
-  ["-u", "--unchained-monk", GetoptLong::NO_ARGUMENT]
+  ["-u", "--unchained-monk", GetoptLong::NO_ARGUMENT],
+  ["-s", "--simple-descriptions", GetoptLong::NO_ARGUMENT]
 )
 
 scriptdir = File.dirname(File.expand_path(__FILE__))
@@ -19,7 +20,8 @@ output = File.expand_path("out.pdf")
 pcgen = File.join(scriptdir, '..', 'pcgen')
 weapons = 5
 complex = false
-unchained_monk=false
+unchained_monk = false
+simple_desc = false
 
 opts.each do |opt, arg|
   case opt
@@ -35,6 +37,8 @@ opts.each do |opt, arg|
     complex = true
   when '-u'
     unchained_monk = true
+  when '-s'
+    simple_desc = true
   end
 end
 
@@ -49,6 +53,7 @@ Dir.chdir(pcgen) do
   cmd << "-Dfirst.page.weapons=#{weapons}"
   cmd << "-Dcomplex.melee=#{complex}"
   cmd << "-Dunchained.monk=#{unchained_monk}"
+  cmd << "-Dsimple.descriptions=#{simple_desc}"
   cmd << "-jar pcgen.jar"
   cmd << "-E '#{sheet}'"
   cmd << "-c '#{character}'"

@@ -10,6 +10,7 @@
   <xsl:import href="../xsltsl-1.1/stdlib.xsl"/>
   <xsl:import href="../inc_pagedimensions.xslt"/>
 
+  <xsl:variable name="simple_descriptions"><xsl:value-of select="system-property('simple.descriptions')"/></xsl:variable>
 
   <!--
       ====================================
@@ -36,13 +37,27 @@
       ====================================-->
   <xsl:template match="special_attacks">
     <xsl:if test="count(special_attack) &gt; 0">
-      <xsl:call-template name="bold.list">
-        <xsl:with-param name="attribute" select="'special_attacks'" />
-        <xsl:with-param name="title" select="'Special Attacks'" />
-        <xsl:with-param name="list" select="special_attack"/>
-        <xsl:with-param name="name.tag" select="'name'"/>
-        <xsl:with-param name="desc.tag" select="'description'"/>
-      </xsl:call-template>
+      <xsl:choose>
+        <xsl:when test="$simple_descriptions = 'true'">        
+          <xsl:call-template name="bold.list">
+            <xsl:with-param name="attribute" select="'special_attacks'" />
+            <xsl:with-param name="title" select="'Special Attacks'" />
+            <xsl:with-param name="list" select="special_attack"/>
+            <xsl:with-param name="name.tag" select="'name'"/>
+            <xsl:with-param name="desc.tag" select="''"/>
+            <xsl:with-param name="name.size" select="'5pt'"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="bold.list">
+            <xsl:with-param name="attribute" select="'special_attacks'" />
+            <xsl:with-param name="title" select="'Special Attacks'" />
+            <xsl:with-param name="list" select="special_attack"/>
+            <xsl:with-param name="name.tag" select="'name'"/>
+            <xsl:with-param name="desc.tag" select="'description'"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:if>
   </xsl:template>
   <!--
@@ -53,13 +68,27 @@
       ====================================-->
   <xsl:template match="special_qualities">
     <xsl:if test="count(special_quality) &gt; 0">
-      <xsl:call-template name="bold.list">
-        <xsl:with-param name="attribute" select="'special_qualities'" />
-        <xsl:with-param name="title" select="'Special Qualities'" />
-        <xsl:with-param name="list" select="special_quality"/>
-        <xsl:with-param name="name.tag" select="'name'"/>
-        <xsl:with-param name="desc.tag" select="'description'"/>
-      </xsl:call-template>
+      <xsl:choose>
+        <xsl:when test="$simple_descriptions = 'true'">        
+          <xsl:call-template name="bold.list">
+            <xsl:with-param name="attribute" select="'special_qualities'" />
+            <xsl:with-param name="title" select="'Special Qualities'" />
+            <xsl:with-param name="list" select="special_quality"/>
+            <xsl:with-param name="name.tag" select="'name'"/>
+            <xsl:with-param name="desc.tag" select="''"/>
+            <xsl:with-param name="name.size" select="'5pt'"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="bold.list">
+            <xsl:with-param name="attribute" select="'special_qualities'" />
+            <xsl:with-param name="title" select="'Special Qualities'" />
+            <xsl:with-param name="list" select="special_quality"/>
+            <xsl:with-param name="name.tag" select="'name'"/>
+            <xsl:with-param name="desc.tag" select="'description'"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:if>
   </xsl:template>
   <!--
@@ -613,15 +642,29 @@
 ====================================
 ====================================-->
         <xsl:template match="traits">
-                <xsl:if test="count(trait) &gt; 0">
-                        <xsl:call-template name="bold.list">
-                                <xsl:with-param name="attribute" select="'traits'" />
-                                <xsl:with-param name="title" select="'Traits'" />
-                                <xsl:with-param name="list" select="trait"/>
-                                <xsl:with-param name="name.tag" select="'name'"/>
-                                <xsl:with-param name="desc.tag" select="'description'"/>
-                        </xsl:call-template>
-                </xsl:if>
+          <xsl:if test="count(trait) &gt; 0">
+            <xsl:choose>
+              <xsl:when test="$simple_descriptions = 'true'">        
+                <xsl:call-template name="bold.list">
+                  <xsl:with-param name="attribute" select="'traits'" />
+                  <xsl:with-param name="title" select="'Traits'" />
+                  <xsl:with-param name="list" select="trait"/>
+                  <xsl:with-param name="name.tag" select="'name'"/>
+                  <xsl:with-param name="desc.tag" select="''"/>
+                  <xsl:with-param name="name.size" select="'5pt'"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="bold.list">
+                  <xsl:with-param name="attribute" select="'traits'" />
+                  <xsl:with-param name="title" select="'Traits'" />
+                  <xsl:with-param name="list" select="trait"/>
+                  <xsl:with-param name="name.tag" select="'name'"/>
+                  <xsl:with-param name="desc.tag" select="'description'"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
         </xsl:template>
 
 
@@ -650,16 +693,30 @@
 ====================================
 ====================================-->
         <xsl:template match="feats">
-                <xsl:if test="count(feat[hidden != 'T' and name != '']) &gt; 0">
+          <xsl:if test="count(feat[hidden != 'T' and name != '']) &gt; 0">
+                  <xsl:choose>
+                    <xsl:when test="$simple_descriptions = 'true'">        
                         <xsl:call-template name="bold.list">
-                                <xsl:with-param name="attribute" select="'feats'" />
-                                <xsl:with-param name="title" select="'Feats'" />
-                                <xsl:with-param name="list" select="feat[hidden != 'T' and name != '']"/>
-                                <xsl:with-param name="name.tag" select="'name'"/>
-                                <xsl:with-param name="desc.tag" select="'description'"/>
-                                <xsl:with-param name="benefit.tag" select="'benefit'"/>
-
+                          <xsl:with-param name="attribute" select="'feats'" />
+                          <xsl:with-param name="title" select="'Feats'" />
+                          <xsl:with-param name="list" select="feat[hidden != 'T' and name != '']"/>
+                          <xsl:with-param name="name.tag" select="'name'"/>
+                          <xsl:with-param name="desc.tag" select="''"/>
+                          <xsl:with-param name="benefit.tag" select="''"/>
+                          <xsl:with-param name="name.size" select="'5pt'"/>
                         </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:call-template name="bold.list">
+                        <xsl:with-param name="attribute" select="'feats'" />
+                        <xsl:with-param name="title" select="'Feats'" />
+                        <xsl:with-param name="list" select="feat[hidden != 'T' and name != '']"/>
+                        <xsl:with-param name="name.tag" select="'name'"/>
+                        <xsl:with-param name="desc.tag" select="'description'"/>
+                        <xsl:with-param name="benefit.tag" select="'benefit'"/>
+                      </xsl:call-template>
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:if>
         </xsl:template>
         <!--
