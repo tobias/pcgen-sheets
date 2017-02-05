@@ -1594,7 +1594,7 @@ be shown on the front page
                   <!-- First Row 5 or 10 Increments       -->
 
                   <!-- Second Row 11 Increments   -->
-                  <xsl:if test="count(./range) = 11">
+                  <xsl:if test="count(./range) = 99">
                     <fo:table-row keep-with-previous.within-page="always">
 
                       <!-- Distances -->
