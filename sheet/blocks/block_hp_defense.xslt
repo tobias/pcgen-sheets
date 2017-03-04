@@ -494,7 +494,11 @@
     <fo:table table-layout="fixed">         <!--space-before="2pt"-->
       <!-- 0.26 * $pagePrintableWidth - mm -->
       <fo:table-column>
-        <xsl:attribute name="column-width"><xsl:value-of select="0.49 * (0.26 * $pagePrintableWidth - 8)" />mm</xsl:attribute>
+        <xsl:attribute name="column-width"><xsl:value-of select="0.25 * (0.26 * $pagePrintableWidth - 8)" />mm</xsl:attribute>
+      </fo:table-column>              <!--    1       -->
+      <fo:table-column column-width="2mm"/>           <!--    2       -->
+      <fo:table-column>
+        <xsl:attribute name="column-width"><xsl:value-of select="0.24 * (0.26 * $pagePrintableWidth - 8)" />mm</xsl:attribute>
       </fo:table-column>              <!--    1       -->
       <fo:table-column column-width="2mm"/>           <!--    2       -->
       <fo:table-column>
@@ -580,8 +584,15 @@
             <xsl:call-template name="attrib">
               <xsl:with-param name="attribute" select="'initiative.title'"/>
             </xsl:call-template>
-            <fo:block line-height="10pt" font-weight="bold" font-size="10pt" space-before="1pt">INITIATIVE</fo:block>
+            <fo:block line-height="10pt" font-weight="bold" font-size="10pt" space-before="1pt">INIT</fo:block>
             <fo:block line-height="4pt" font-size="4pt">modifier</fo:block>
+          </fo:table-cell>                <!--    1       -->
+          <fo:table-cell/>                <!--    2       -->
+          <fo:table-cell>
+            <xsl:call-template name="attrib">
+              <xsl:with-param name="attribute" select="'initiative.title'"/>
+            </xsl:call-template>
+            <fo:block line-height="10pt" font-weight="bold" font-size="10pt" space-before="1pt">&#160;</fo:block>
           </fo:table-cell>                <!--    1       -->
           <fo:table-cell/>                <!--    2       -->
           <fo:table-cell>
@@ -716,6 +727,8 @@
         <!-- Label Row -->
         <fo:table-row>
 
+          <fo:table-cell/>                <!--    1       -->
+          <fo:table-cell/>                <!--    2       -->
           <fo:table-cell/>                <!--    1       -->
           <fo:table-cell/>                <!--    2       -->
           <fo:table-cell>
@@ -977,7 +990,9 @@
   <xsl:template match="saving_throws" mode="saves">
     <!-- BEGIN Saves table -->
     <fo:table table-layout="fixed">
-      <fo:table-column column-width="23mm"/>
+      <fo:table-column column-width="14mm"/>
+      <fo:table-column column-width="2mm"/>
+      <fo:table-column column-width="14mm"/>
       <fo:table-column column-width="2mm"/>
       <fo:table-column column-width="7mm"/>
       <fo:table-column column-width="2mm"/>
@@ -994,8 +1009,10 @@
         <fo:table-row>
 
           <fo:table-cell>
-            <fo:block text-align="center" space-before.optimum="1pt" font-size="6pt">SAVING THROWS</fo:block>
+            <fo:block text-align="center" space-before.optimum="1pt" font-size="6pt">SAVES</fo:block>
           </fo:table-cell>
+          <fo:table-cell/>
+          <fo:table-cell/>
           <fo:table-cell number-columns-spanned="3">
             <fo:block text-align="center" space-before.optimum="1pt" font-size="6pt">TOTAL</fo:block>
           </fo:table-cell>
@@ -1015,9 +1032,6 @@
             <fo:block text-align="center" font-size="4pt">MISC</fo:block>
           </fo:table-cell>
           <fo:table-cell/>
-          <fo:table-cell>
-            <fo:block text-align="center" font-size="4pt">EPIC</fo:block>
-          </fo:table-cell>
         </fo:table-row>
         <xsl:for-each select="saving_throw">
           <fo:table-row space-before="2pt">
@@ -1027,9 +1041,16 @@
                 <xsl:with-param name="attribute" select="'saves.title'"/>
               </xsl:call-template>
               <fo:block line-height="10pt" font-weight="bold" font-size="10pt" space-before="1pt">
-                <xsl:value-of select="translate(name/long, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
+                <xsl:value-of select="translate(name/short, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/>
               </fo:block>
               <fo:block line-height="4pt" font-size="4pt">(<xsl:value-of select="ability"/>)</fo:block>
+            </fo:table-cell>
+            <fo:table-cell/>
+            <fo:table-cell>
+              <xsl:call-template name="attrib">
+                <xsl:with-param name="attribute" select="'saves.title'"/>
+              </xsl:call-template>
+              <fo:block line-height="10pt" font-weight="bold" font-size="10pt" space-before="1pt">&#160;</fo:block>
             </fo:table-cell>
             <fo:table-cell/>
             <fo:table-cell>
@@ -1046,11 +1067,7 @@
             <xsl:call-template name="saves.entry"><xsl:with-param name="value" select="base"/></xsl:call-template>
             <xsl:call-template name="saves.entry"><xsl:with-param name="value" select="abil_mod"/></xsl:call-template>
             <xsl:call-template name="saves.entry"><xsl:with-param name="value" select="magic_mod"/></xsl:call-template>
-            <xsl:call-template name="saves.entry"><xsl:with-param name="value" select="misc_mod"/></xsl:call-template>
-            <xsl:call-template name="saves.entry">
-              <xsl:with-param name="value" select="epic_mod"/>
-              <xsl:with-param name="with-plus">false</xsl:with-param>
-            </xsl:call-template>
+            <xsl:call-template name="saves.entry"><xsl:with-param name="value" select="misc_mod"/><xsl:with-param name="with-plus">false</xsl:with-param></xsl:call-template>
           </fo:table-row>
           <fo:table-row height="2pt">
             <xsl:message>Test END</xsl:message>

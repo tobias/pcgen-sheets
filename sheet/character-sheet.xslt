@@ -75,7 +75,7 @@
     <tohit.total><subattrib border="" centre="" light=""/></tohit.total>
     <tohit><subattrib border="" centre="" normal=""/></tohit>
 
-    <weapon.title><subattrib border="" centre="" inverse=""/></weapon.title>
+    <weapon.title><subattrib border="" inverse=""/></weapon.title>
     <weapon.border><subattrib border="" inverse=""/></weapon.border>
     <weapon.hilight><subattrib border="" centre="" light=""/></weapon.hilight>
     <weapon><subattrib border="" centre="" normal=""/></weapon>
