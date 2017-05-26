@@ -990,10 +990,10 @@
   <xsl:template match="saving_throws" mode="saves">
     <!-- BEGIN Saves table -->
     <fo:table table-layout="fixed">
-      <fo:table-column column-width="14mm"/>
-      <fo:table-column column-width="2mm"/>
-      <fo:table-column column-width="14mm"/>
-      <fo:table-column column-width="2mm"/>
+      <fo:table-column column-width="10mm"/>
+      <fo:table-column column-width="1mm"/>
+      <fo:table-column column-width="25mm"/>
+      <fo:table-column column-width="1mm"/>
       <fo:table-column column-width="7mm"/>
       <fo:table-column column-width="2mm"/>
       <fo:table-column column-width="7mm"/>
