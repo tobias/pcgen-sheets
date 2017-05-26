@@ -871,10 +871,12 @@ first page
               <xsl:call-template name="attrib">
                 <xsl:with-param name="attribute" select="'checklist'"/>
               </xsl:call-template>
-              <fo:block font-size="5pt" font-weight="bold">
-                <xsl:if test="name != ''"> <xsl:value-of select="name"/>:</xsl:if>
-                <fo:inline font-size="5pt" font-weight="normal"><xsl:value-of select="description"/><xsl:if test="source != ''"> [<xsl:value-of select="source"/>]</xsl:if></fo:inline>
-              </fo:block>
+              <xsl:if test="$simple_descriptions != 'true'">
+                <fo:block font-size="5pt" font-weight="bold">
+                  <xsl:if test="name != ''"> <xsl:value-of select="name"/>:</xsl:if>
+                  <fo:inline font-size="5pt" font-weight="normal"><xsl:value-of select="description"/><xsl:if test="source != ''"> [<xsl:value-of select="source"/>]</xsl:if></fo:inline>
+                </fo:block>
+              </xsl:if>
             </fo:table-cell>
           </fo:table-row>
           <xsl:for-each select="subability">
@@ -883,10 +885,12 @@ first page
                 <xsl:call-template name="attrib">
                   <xsl:with-param name="attribute" select="'checklist'"/>
                 </xsl:call-template>
-                <fo:block font-size="5pt" font-weight="bold">
-                  <xsl:if test="name != ''"> <xsl:value-of select="name"/>:</xsl:if>
-                  <fo:inline font-size="5pt" font-weight="normal"><xsl:value-of select="description"/><xsl:if test="source != ''"> [<xsl:value-of select="source"/>]</xsl:if></fo:inline>
-                </fo:block>
+                <xsl:if test="$simple_descriptions != 'true'">
+                  <fo:block font-size="5pt" font-weight="bold">
+                    <xsl:if test="name != ''"> <xsl:value-of select="name"/>:</xsl:if>
+                    <fo:inline font-size="5pt" font-weight="normal"><xsl:value-of select="description"/><xsl:if test="source != ''"> [<xsl:value-of select="source"/>]</xsl:if></fo:inline>
+                  </fo:block>
+                </xsl:if>
               </fo:table-cell>
             </fo:table-row>
           </xsl:for-each>
